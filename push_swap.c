@@ -12,6 +12,73 @@
 
 #include "push_swap.h"
 
+static int	stack_is_sorted(t_node **stk)
+{
+	t_node	*min;
+	t_node	*max;
+
+	if (*stk)
+	{
+		min = *stk;
+		max = (*stk)->node;
+		if (max != NULL)
+		{
+			while (max)
+			{
+				if (min->value > max->value)
+					return (0);
+				min = min->node;
+				max = max->node;
+			}
+		}
+	}
+	return (1);
+}
+
+static void	set_rules(t_node **stk_a, t_node **stk_b)
+{
+	int	len;
+	int	val;
+	int	sec;
+	int	last;
+
+	while (!stack_is_sorted(stk_a))
+	{
+		len = len_stack(stk_a);
+		last = get_value_stack(len, stk_a);
+		val = (*stk_a)->value;
+		sec = (*stk_a)->node->value;
+		if (val < sec && val < last)
+		{
+			ft_printf("sa\n");
+			swap(stk_a);
+		}
+		else if (val > sec && val < last)
+		{
+			ft_printf("ra\n");
+			up_rotate(unstack(stk_a), stk_a);
+		}
+		else if (val < last && val > sec)
+		{
+			ft_printf("sa\n");
+			swap(stk_a);
+		}
+		else if (val > last && val < sec)
+		{
+			ft_printf("rra\n");
+			down_rotate(stk_a);
+		}
+		else if (val > sec && val > last)
+		{
+			ft_printf("ra\n");
+			up_rotate(unstack(stk_a), stk_a);
+		}
+		ft_printf("\n\n");
+		read_stack(stk_a, stk_b);
+	}
+	read_stack(stk_a, stk_b);
+}
+
 int	main(int argc, char *argv[])
 {
 	int		count;
@@ -32,7 +99,7 @@ int	main(int argc, char *argv[])
 			count--;
 		}
 		check_doubles(&stk_a);
-		read_stack(&stk_a, &stk_b);
+		set_rules(&stk_a, &stk_b);
 	}
-	system("leaks checker");
+	system("leaks push_swap");
 }

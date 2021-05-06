@@ -44,6 +44,5 @@ void	check_sort_list(t_node **stk_a, t_node **stk_b)
 			ft_printf("\033[92mOK\033[39m\n");
 		}
 	}
-	else
-		ft_error("KO");
+	ft_error("KO");
 }

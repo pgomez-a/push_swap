@@ -23,6 +23,8 @@ typedef struct s_node {
 /* stack.c */
 void	stack(int elem, t_node **stk);
 int	unstack(t_node **stk);
+int	len_stack(t_node **stk);
+int	get_value_stack(int pos, t_node **stk);
 void	read_stack(t_node **stk_a, t_node **stk_b);
 
 /* rules.c */

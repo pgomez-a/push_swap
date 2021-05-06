@@ -14,28 +14,66 @@
 
 void	stack(int elem, t_node **stk)
 {
-	t_node	*pos;
+	t_node	*head;
 
-	pos = (t_node *)malloc(sizeof(t_node));
-	if (pos)
+	head = (t_node *)malloc(sizeof(t_node));
+	if (head)
 	{
-		pos->value = elem;
-		pos->node = *stk;
-		(*stk) = pos;
+		head->value = elem;
+		head->node = *stk;
+		(*stk) = head;
 	}
 }
 
 int	unstack(t_node **stk)
 {
-	t_node	*tmp;
+	t_node	*node;
 	int	value;
 
 	value = (*stk)->value;
-	tmp = *stk;
+	node = *stk;
 	(*stk) = (*stk)->node;
-	free(tmp);
-	tmp = NULL;
+	free(node);
+	node = NULL;
 	return (value);
+}
+
+int	len_stack(t_node **stk)
+{
+	t_node	*len;
+	int	result;
+
+	if (*stk)
+	{
+		len = *stk;
+		result = 0;
+		while (len->node)
+		{
+			result++;
+			len = len->node;
+		}
+		return (result);
+	}
+	return (-1);
+}
+
+int	get_value_stack(int pos, t_node **stk)
+{
+	t_node	*node;
+	int	count;
+
+	if (*stk)
+	{
+		node = *stk;
+		count = 0;
+		while (node->node && count < pos)
+		{
+			count++;
+			node = node->node;
+		}
+		return (node->value);
+	}
+	return (-9999);
 }
 
 void	read_stack(t_node **stk_a, t_node **stk_b)
