@@ -14,6 +14,7 @@
 
 SRCS	= ./stack/stack.c	\
 		  ./stack/rules.c	\
+		  ./stack/utils.c	\
 		  check_input.c		\
 		  check_list.c		\
 		  utils.c

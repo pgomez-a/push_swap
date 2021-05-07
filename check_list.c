@@ -42,6 +42,7 @@ void	check_sort_list(t_node **stk_a, t_node **stk_b)
 				max = max->node;
 			}
 			ft_printf("\033[92mOK\033[39m\n");
+			exit(0);
 		}
 	}
 	ft_error("KO");

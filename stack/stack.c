@@ -12,6 +12,7 @@
 
 #include "stack.h"
 
+/* Stack the given element */
 void	stack(int elem, t_node **stk)
 {
 	t_node	*head;
@@ -25,6 +26,7 @@ void	stack(int elem, t_node **stk)
 	}
 }
 
+/* Unstack an element an return it */
 int	unstack(t_node **stk)
 {
 	t_node	*node;
@@ -38,6 +40,7 @@ int	unstack(t_node **stk)
 	return (value);
 }
 
+/* Get the len of the stack */
 int	len_stack(t_node **stk)
 {
 	t_node	*len;
@@ -57,65 +60,33 @@ int	len_stack(t_node **stk)
 	return (-1);
 }
 
-int	get_value_stack(int pos, t_node **stk)
+static void	print_last(int mode, t_node **a, t_node **b)
 {
-	t_node	*node;
-	int	count;
-
-	if (*stk)
+	if (mode == 0)
 	{
-		node = *stk;
-		count = 1;
-		while (node->node && count < pos)
+		ft_printf("|%5d    |     |_________|\n", (*a)->value);
+		(*a) = (*a)->node;
+		while (*a)
 		{
-			count++;
-			node = node->node;
+			ft_printf("|%5d    |\n", (*a)->value);
+			(*a) = (*a)->node;
 		}
-		return (node->value);
+		ft_printf("|_________|\n");
 	}
-	return (-9999);
+	else if (mode == 1)
+	{
+		ft_printf("|_________|     |%5d    |\n", (*b)->value);
+		(*b) = (*b)->node;
+		while (*b)
+		{
+			ft_printf("                |%5d    |\n", (*b)->value);
+			(*b) = (*b)->node;
+		}
+		ft_printf("                |_________|\n");
+	}
 }
 
-int	get_max_stack(t_node **stk)
-{
-	t_node	*node;
-	int		max;
-
-	if (*stk)
-	{
-		node = *stk;
-		max = node->value;
-		while (node)
-		{
-			if (max < node->value)
-				max = node->value;
-			node = node->node;
-		}
-		return (max);
-	}
-	return (-9999);
-}
-
-int	get_min_stack(t_node **stk)
-{
-	t_node	*node;
-	int		min;
-
-	if (*stk)
-	{
-		node = *stk;
-		min = node->value;
-		while (node->node)
-		{
-			if (min > node->value)
-				min = node->value;
-			node = node->node;
-		}
-		return (min);
-	}
-	return (-9999);
-}
-
+/* Print stack_a and stack_b */
 void	read_stack(t_node **stk_a, t_node **stk_b)
 {
 	t_node	*a;
@@ -130,25 +101,7 @@ void	read_stack(t_node **stk_a, t_node **stk_b)
 		b = b->node;
 	}
 	if (a)
-	{
-		ft_printf("|%5d    |     |_________|\n", a->value);
-		a = a->node;
-		while (a)
-		{
-			ft_printf("|%5d    |\n", a->value);
-			a = a->node;
-		}
-		ft_printf("|_________|\n");
-	}
+		print_last(0, &a, &b);
 	else if (b)
-	{
-		ft_printf("|_________|     |%5d    |\n", b->value);
-		b = b->node;
-		while (b)
-		{
-			ft_printf("                |%5d    |\n", b->value);
-			b = b->node;
-		}
-		ft_printf("                |_________|\n");
-	}
+		print_last(1, &a, &b);
 }
