@@ -69,11 +69,19 @@ static int	sort_three(int tot, t_node **stk_a)
 
 static int	rotate_to_num(int tot, int num, t_node **stk)
 {
+	int	len;
+	int	pos;
+
 	if (*stk)
 	{
+		len = len_stack(stk);
+		pos = pos_from_value_stack(num, stk);
 		while ((*stk)->value != num)
 		{
-			call_up_rotate("ra", stk);
+			if (pos > len / 2)
+				call_down_rotate("rra", stk);
+			else
+				call_up_rotate("ra", stk);
 			tot++;
 		}
 	}
@@ -106,8 +114,9 @@ static int	sort_five(int tot, int len, t_node **stk_a, t_node **stk_b)
 	int	max;
 	int	min;
 	int	next;
+	int	pos;
 
-	while (len > 3)
+	while (len > 3 && !stack_is_sorted(stk_a))
 	{
 		call_push("pb", stk_a, stk_b);
 		tot++;
@@ -134,9 +143,14 @@ static int	sort_five(int tot, int len, t_node **stk_a, t_node **stk_b)
 		read_stack(stk_a, stk_b);
 		tot++;
 	}
+	len = len_stack(stk_a);
+	pos = pos_from_value_stack(min, stk_a);
 	while (!stack_is_sorted(stk_a))
 	{
-		call_up_rotate("ra", stk_a);
+		if (pos > len / 2)
+			call_down_rotate("rra", stk_a);
+		else
+			call_up_rotate("ra", stk_a);
 		tot++;
 	}
 	return (tot);
