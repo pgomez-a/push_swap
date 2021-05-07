@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 09:57:19 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/05/07 10:10:33 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/05/07 14:27:46 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,53 @@ int	get_value_stack(int pos, t_node **stk)
 	if (*stk)
 	{
 		node = *stk;
-		count = 0;
+		count = 1;
 		while (node->node && count < pos)
 		{
 			count++;
 			node = node->node;
 		}
 		return (node->value);
+	}
+	return (-9999);
+}
+
+int	get_max_stack(t_node **stk)
+{
+	t_node	*node;
+	int		max;
+
+	if (*stk)
+	{
+		node = *stk;
+		max = node->value;
+		while (node)
+		{
+			if (max < node->value)
+				max = node->value;
+			node = node->node;
+		}
+		return (max);
+	}
+	return (-9999);
+}
+
+int	get_min_stack(t_node **stk)
+{
+	t_node	*node;
+	int		min;
+
+	if (*stk)
+	{
+		node = *stk;
+		min = node->value;
+		while (node->node)
+		{
+			if (min > node->value)
+				min = node->value;
+			node = node->node;
+		}
+		return (min);
 	}
 	return (-9999);
 }

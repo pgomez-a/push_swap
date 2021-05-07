@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 10:47:58 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/05/04 14:02:31 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/05/07 14:01:34 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ typedef struct s_node {
 
 /* stack.c */
 void	stack(int elem, t_node **stk);
-int	unstack(t_node **stk);
-int	len_stack(t_node **stk);
-int	get_value_stack(int pos, t_node **stk);
+int		unstack(t_node **stk);
+int		len_stack(t_node **stk);
+int		get_value_stack(int pos, t_node **stk);
+int		get_max_stack(t_node **stk);
+int		get_min_stack(t_node **stk);
 void	read_stack(t_node **stk_a, t_node **stk_b);
 
 /* rules.c */
