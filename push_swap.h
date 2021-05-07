@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 08:45:17 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/05/05 10:06:28 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/05/07 11:12:43 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdio.h>
 
 /* check_input.c */
-int	find_variable(char *str);
+int		find_variable(char *str);
 void	check_argument(char *str);
 void	check_argv(char *str, t_node **stk);
 void	check_variable(char *str, t_node **stk);
@@ -31,5 +31,11 @@ void	ft_error(char *str);
 
 /* ch_rules.c */
 void	ch_read_rules(t_node **stk_a, t_node **stk_b);
+
+/* ps_calls.c */
+void	call_swap(char *str, t_node **stk);
+void	call_push(char *str, t_node **stk_i, t_node **stk_d);
+void	call_up_rotate(char *str, t_node **stk);
+void	call_down_rotate(char *str, t_node **stk);
 
 #endif

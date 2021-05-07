@@ -6,26 +6,27 @@
 #    By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/04 08:55:31 by pgomez-a          #+#    #+#              #
-#    Updated: 2021/05/05 10:55:16 by pgomez-a         ###   ########.fr        #
+#    Updated: 2021/05/07 11:15:29 by pgomez-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY:	all clean fclean re
 
 SRCS	= ./stack/stack.c	\
-	  ./stack/rules.c	\
-	  check_input.c		\
-	  check_list.c		\
-	  utils.c
+		  ./stack/rules.c	\
+		  check_input.c		\
+		  check_list.c		\
+		  utils.c
 
 OBJS	= $(SRCS:.c=.o)
 
 CH_SRCS	= checker.c		\
-	  ch_rules.c		\
+		  ch_rules.c
 
 CH_OBJS	= $(CH_SRCS:.c=.o)
 
-PS_SRCS	= push_swap.c
+PS_SRCS	= push_swap.c	\
+		  ps_calls.c
 
 PS_OBJS	= $(PS_SRCS:.c=.o)
 

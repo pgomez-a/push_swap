@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                          :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 08:43:25 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/05/07 10:14:37 by pgomez-a         ###   ########.fr       */
+/*   Created: 2021/05/07 11:05:22 by pgomez-a          #+#    #+#             */
+/*   Updated: 2021/05/07 11:28:56 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,47 +35,38 @@ static int	stack_is_sorted(t_node **stk)
 	return (1);
 }
 
-static void	recursive_sort(int *tot, t_node **stk_a, t_node **stk_b)
+static void	sort_three(t_node **stk_a)
 {
-	int	len;
+	int	last;
+	int	sec;
+	int	tot;
 
-	len = len_stack(stk_a);
-	if (len > 1)
+	tot = 0;
+	while (!stack_is_sorted(stk_a))
 	{
-		push(stk_a, stk_b);
-		ft_printf("pb\n");
-		(*tot) += 1;
-		recursive_sort(tot, stk_a, stk_b);
-		push(stk_b, stk_a);
-		ft_printf("pa\n");
-		(*tot) += 1;
-		if ((*stk_a)->value > (*stk_a)->node->value)
-		{
-			swap(stk_a);
-			ft_printf("sa\n");
-			(*tot) += 1;
-		}
+		sec = (*stk_a)->node->value;
+		last = get_value_stack(2, stk_a);
+		if ((*stk_a)->value < sec && (*stk_a)->value < last)
+			call_swap("sa", stk_a);
+		else if ((*stk_a)->value > sec && (*stk_a)->value < last)
+			call_swap("sa", stk_a);
+		else if ((*stk_a)->value < sec && (*stk_a)->value > last)
+			call_down_rotate("rra", stk_a);
+		else if ((*stk_a)->value > sec && (*stk_a)->value > last)
+			call_up_rotate("ra", stk_a);
+		tot++;
 	}
+	ft_printf("tot: %d\n", tot);
 }
 
 static void	set_rules(t_node **stk_a, t_node **stk_b)
 {
-	//int	len;
-	//int	val;
-	//int	sec;
-	//int	last;
-	int		*tot;
+	int	len;
 
-	tot = (int *)malloc(sizeof(int) * 1);
-	(*tot) = 0;
-	while (!stack_is_sorted(stk_a))
-	{
-		recursive_sort(tot, stk_a, stk_b);
-	}
-	ft_printf("\n\n");
+	len = len_stack(stk_a);
+	if (len <= 3)
+		sort_three(stk_a);
 	read_stack(stk_a, stk_b);
-	ft_printf("tot: %d\n\n\n", *tot);
-	free(tot);
 }
 
 int	main(int argc, char *argv[])
@@ -100,5 +91,5 @@ int	main(int argc, char *argv[])
 		check_doubles(&stk_a);
 		set_rules(&stk_a, &stk_b);
 	}
-	system("leaks push_swap");
+	//system("leaks push_swap");
 }
