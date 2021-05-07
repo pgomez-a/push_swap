@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 09:57:19 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/05/04 14:02:17 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/05/07 10:10:33 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	len_stack(t_node **stk)
 	{
 		len = *stk;
 		result = 0;
-		while (len->node)
+		while (len)
 		{
 			result++;
 			len = len->node;

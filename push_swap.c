@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 08:43:25 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/05/05 10:09:21 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/05/07 10:14:37 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,48 +35,47 @@ static int	stack_is_sorted(t_node **stk)
 	return (1);
 }
 
-static void	set_rules(t_node **stk_a, t_node **stk_b)
+static void	recursive_sort(int *tot, t_node **stk_a, t_node **stk_b)
 {
 	int	len;
-	int	val;
-	int	sec;
-	int	last;
 
+	len = len_stack(stk_a);
+	if (len > 1)
+	{
+		push(stk_a, stk_b);
+		ft_printf("pb\n");
+		(*tot) += 1;
+		recursive_sort(tot, stk_a, stk_b);
+		push(stk_b, stk_a);
+		ft_printf("pa\n");
+		(*tot) += 1;
+		if ((*stk_a)->value > (*stk_a)->node->value)
+		{
+			swap(stk_a);
+			ft_printf("sa\n");
+			(*tot) += 1;
+		}
+	}
+}
+
+static void	set_rules(t_node **stk_a, t_node **stk_b)
+{
+	//int	len;
+	//int	val;
+	//int	sec;
+	//int	last;
+	int		*tot;
+
+	tot = (int *)malloc(sizeof(int) * 1);
+	(*tot) = 0;
 	while (!stack_is_sorted(stk_a))
 	{
-		len = len_stack(stk_a);
-		last = get_value_stack(len, stk_a);
-		val = (*stk_a)->value;
-		sec = (*stk_a)->node->value;
-		if (val < sec && val < last)
-		{
-			ft_printf("sa\n");
-			swap(stk_a);
-		}
-		else if (val > sec && val < last)
-		{
-			ft_printf("ra\n");
-			up_rotate(unstack(stk_a), stk_a);
-		}
-		else if (val < last && val > sec)
-		{
-			ft_printf("sa\n");
-			swap(stk_a);
-		}
-		else if (val > last && val < sec)
-		{
-			ft_printf("rra\n");
-			down_rotate(stk_a);
-		}
-		else if (val > sec && val > last)
-		{
-			ft_printf("ra\n");
-			up_rotate(unstack(stk_a), stk_a);
-		}
-		ft_printf("\n\n");
-		read_stack(stk_a, stk_b);
+		recursive_sort(tot, stk_a, stk_b);
 	}
+	ft_printf("\n\n");
 	read_stack(stk_a, stk_b);
+	ft_printf("tot: %d\n\n\n", *tot);
+	free(tot);
 }
 
 int	main(int argc, char *argv[])
