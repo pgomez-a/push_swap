@@ -29,16 +29,10 @@ static void	check_swap(char *line, t_node **stk_a, t_node **stk_b)
 
 static void	check_rotate(char *line, t_node **stk_a, t_node **stk_b)
 {
-	if (!ft_strncmp(line, "ra", 3))
-	{
-		if (*stk_a)
-			up_rotate(unstack(stk_a), stk_a);
-	}
-	else if (!ft_strncmp(line, "rb", 3))
-	{
-		if (*stk_b)
-			up_rotate(unstack(stk_b), stk_b);
-	}
+	if (!ft_strncmp(line, "ra", 3) && *stk_a)
+		up_rotate(unstack(stk_a), stk_a);
+	else if (!ft_strncmp(line, "rb", 3) && *stk_b)
+		up_rotate(unstack(stk_b), stk_b);
 	else if (!ft_strncmp(line, "rr", 3))
 	{
 		if (*stk_a)
@@ -46,16 +40,10 @@ static void	check_rotate(char *line, t_node **stk_a, t_node **stk_b)
 		if (*stk_b)
 			up_rotate(unstack(stk_b), stk_b);
 	}	
-	else if (!ft_strncmp(line, "rra", 4))
-	{
-		if (*stk_a)
-			down_rotate(stk_a);
-	}
-	else if (!ft_strncmp(line, "rrb", 4))
-	{
-		if (*stk_b)
-			down_rotate(stk_b);
-	}
+	else if (!ft_strncmp(line, "rra", 4) && *stk_a)
+		down_rotate(stk_a);
+	else if (!ft_strncmp(line, "rrb", 4) && *stk_b)
+		down_rotate(stk_b);
 	else if (!ft_strncmp(line, "rrr", 4))
 	{
 		if (*stk_a)
