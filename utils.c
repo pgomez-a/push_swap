@@ -17,6 +17,5 @@ void	ft_error(char *str)
 	ft_printf("\033[31m");
 	ft_printf("%s\n", str);
 	ft_printf("\033[39m");
-	system("leaks checker");
 	exit(0);
 }

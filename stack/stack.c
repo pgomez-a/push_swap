@@ -104,4 +104,6 @@ void	read_stack(t_node **stk_a, t_node **stk_b)
 		print_last(0, &a, &b);
 	else if (b)
 		print_last(1, &a, &b);
+	else
+		ft_printf("|_________|     |_________|\n");
 }

@@ -86,7 +86,6 @@ void	ch_read_rules(t_node **stk_a, t_node **stk_b)
 	char	*line;
 	int		verif;
 
-	read_stack(stk_a, stk_b);
 	verif = get_next_line(0, &line);
 	while (verif > 0)
 	{

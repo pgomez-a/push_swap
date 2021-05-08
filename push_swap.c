@@ -119,14 +119,14 @@ static int	sort_five(int tot, int len, t_node **stk_a, t_node **stk_b)
 	while (len > 3 && !stack_is_sorted(stk_a))
 	{
 		call_push("pb", stk_a, stk_b);
+		read_stack(stk_a, stk_b);
 		tot++;
 		len--;
 	}
 	tot = sort_three(tot, stk_a);
-	read_stack(stk_a, stk_b);
-	ft_printf("\n");
 	while (*stk_b)
 	{
+		read_stack(stk_a, stk_b);
 		max = get_max_stack(stk_a);
 		min = get_min_stack(stk_a);
 		if ((*stk_b)->value > max)
@@ -138,9 +138,7 @@ static int	sort_five(int tot, int len, t_node **stk_a, t_node **stk_b)
 			next = get_next_num((*stk_b)->value, stk_a);
 			tot = rotate_to_num(tot, next, stk_a);
 		}
-		read_stack(stk_a, stk_b);
-		call_push("pb", stk_b, stk_a);
-		read_stack(stk_a, stk_b);
+		call_push("pa", stk_b, stk_a);
 		tot++;
 	}
 	len = len_stack(stk_a);
@@ -152,6 +150,7 @@ static int	sort_five(int tot, int len, t_node **stk_a, t_node **stk_b)
 		else
 			call_up_rotate("ra", stk_a);
 		tot++;
+		read_stack(stk_a, stk_b);
 	}
 	return (tot);
 }
@@ -166,9 +165,8 @@ static void	set_rules(t_node **stk_a, t_node **stk_b)
 	tot = 0;
 	if (len <= 3)
 		tot = sort_three(tot, stk_a);
-	else if (len <= 5)
+	else //if (len <= 5)
 		tot = sort_five(tot, len, stk_a, stk_b);
-	read_stack(stk_a, stk_b);
 	ft_printf("tot: %d\n", tot);
 }
 
@@ -194,5 +192,4 @@ int	main(int argc, char *argv[])
 		check_doubles(&stk_a);
 		set_rules(&stk_a, &stk_b);
 	}
-	//system("leaks push_swap");
 }

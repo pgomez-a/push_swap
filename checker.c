@@ -35,5 +35,4 @@ int	main(int argc, char *argv[])
 		ch_read_rules(&stk_a, &stk_b);
 		read_stack(&stk_a, &stk_b);
 	}
-	system("leaks checker");
 }
