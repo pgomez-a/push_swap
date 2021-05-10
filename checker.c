@@ -33,6 +33,5 @@ int	main(int argc, char *argv[])
 		}
 		check_doubles(&stk_a);
 		ch_read_rules(&stk_a, &stk_b);
-		read_stack(&stk_a, &stk_b);
 	}
 }

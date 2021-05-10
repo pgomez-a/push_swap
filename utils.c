@@ -19,3 +19,24 @@ void	ft_error(char *str)
 	ft_printf("\033[39m");
 	exit(0);
 }
+
+int	get_next_num(int elem, t_node **stk)
+{
+	t_node	*node;
+	int	result;
+
+	result = -9999;
+	if (*stk)
+	{
+		node = *stk;
+		while (node)
+		{
+			if (result < elem && node->value > elem)
+				result = node->value;
+			else if (node->value > elem && node->value < result)
+				result = node->value;
+			node = node->node;
+		}
+	}
+	return (result);
+}

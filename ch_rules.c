@@ -51,7 +51,7 @@ static void	check_rotate(char *line, t_node **stk_a, t_node **stk_b)
 		if (*stk_b)
 			down_rotate(stk_b);
 	}
-	else
+	else if (*stk_a)
 		ft_error("Error");
 }
 
@@ -83,5 +83,5 @@ void	ch_read_rules(t_node **stk_a, t_node **stk_b)
 		verif = get_next_line(0, &line);
 	}
 	free(line);
-	check_sort_list(stk_a, stk_b);
+	check_sort_stack(stk_a, stk_b);
 }

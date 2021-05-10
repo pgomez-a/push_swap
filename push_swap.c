@@ -12,162 +12,117 @@
 
 #include "push_swap.h"
 
-static int	stack_is_sorted(t_node **stk)
-{
-	t_node	*min;
-	t_node	*max;
+/****************
+ * SORT HUNDRED *
+ * *************/
 
-	if (*stk)
-	{
-		min = *stk;
-		max = (*stk)->node;
-		if (max != NULL)
-		{
-			while (max)
-			{
-				if (min->value > max->value)
-					return (0);
-				min = min->node;
-				max = max->node;
-			}
-		}
-	}
-	return (1);
-}
-
-/**************
- * SORT THREE *
- * ***********/
-
-static int	sort_three(int tot, t_node **stk_a)
-{
-	int	last;
-	int	sec;
-
-	while (!stack_is_sorted(stk_a))
-	{
-		sec = (*stk_a)->node->value;
-		last = value_from_pos_stack(3, stk_a);
-		if ((*stk_a)->value < sec && (*stk_a)->value < last)
-			call_swap("sa", stk_a);
-		else if ((*stk_a)->value > sec && (*stk_a)->value < last)
-			call_swap("sa", stk_a);
-		else if ((*stk_a)->value < sec && (*stk_a)->value > last)
-			call_down_rotate("rra", stk_a);
-		else if ((*stk_a)->value > sec && (*stk_a)->value > last)
-			call_up_rotate("ra", stk_a);
-		tot++;
-	}
-	return (tot);
-}
-/******************/
-
-
-/*************
- * SORT FIVE *
- * **********/
-
-static int	rotate_to_num(int tot, int num, t_node **stk)
-{
-	int	len;
-	int	pos;
-
-	if (*stk)
-	{
-		len = len_stack(stk);
-		pos = pos_from_value_stack(num, stk);
-		while ((*stk)->value != num)
-		{
-			if (pos > len / 2)
-				call_down_rotate("rra", stk);
-			else
-				call_up_rotate("ra", stk);
-			tot++;
-		}
-	}
-	return (tot);
-}
-
-static int	get_next_num(int elem, t_node **stk)
+static int	first_in_part(int num, int parts, t_node **stk)
 {
 	t_node	*node;
-	int	result;
+	int	count;
 
-	result = -9999;
+	count = 0;
 	if (*stk)
 	{
 		node = *stk;
 		while (node)
 		{
-			if (result < elem && node->value > elem)
-				result = node->value;
-			else if (node->value > elem && node->value < result)
-				result = node->value;
+			if (node->value < num)
+				count++;
 			node = node->node;
 		}
 	}
-	return (result);
+	if (count < parts)
+		return (1);
+	return (0);
 }
 
-static int	sort_five(int tot, int len, t_node **stk_a, t_node **stk_b)
+static void	look_for_part(int parts, int len, t_node **stk_a, t_node **stk_b)
 {
-	int	max;
-	int	min;
-	int	next;
+	t_node	*node;
 	int	pos;
+	int	min;
+	int	max;
+	int	next;
 
-	while (len > 3 && !stack_is_sorted(stk_a))
+	if (*stk_a)
 	{
-		call_push("pb", stk_a, stk_b);
+		if (len < parts)
+			parts = len;
+		while (parts > 0)
+		{
+			node = *stk_a;
+			min = node->value;
+			while (node && !first_in_part(min, parts, stk_a))
+			{
+				node = node->node;
+				min = node->value;
+			}
+			parts--;
+			pos = pos_from_value_stack(min, stk_a);
+			while ((*stk_a)->value != min)
+			{
+				if (pos > len / 2)
+					call_down_rotate("rra", stk_a);
+				else
+					call_up_rotate("ra", stk_a);
+			}
+			max = get_max_stack(stk_b);
+			min = get_min_stack(stk_b);
+			if ((*stk_a)->value > max)
+				rotate_to_num(0, min, stk_b);
+			else if ((*stk_a)->value < min)
+				rotate_to_num(0, min, stk_b);
+			else
+			{
+				next = get_next_num((*stk_a)->value, stk_b);
+				rotate_to_num(0, next, stk_b);
+			}
+			call_push("pb", stk_a, stk_b);
+		}
 		read_stack(stk_a, stk_b);
-		tot++;
-		len--;
+		exit(0);
 	}
-	tot = sort_three(tot, stk_a);
+}
+
+static void	sort_hundred(t_node **stk_a, t_node **stk_b)
+{
+	int	parts;
+	int	count;
+	int	len;
+	int	max;
+
+	len = len_stack(stk_a);
+	parts = len / 5;
+	count = 0;
+	while (count < 5)
+	{
+		look_for_part(parts, len, stk_a, stk_b);
+		len = len_stack(stk_a);
+		count++;
+	}
+	max = get_max_stack(stk_b);
+	rotate_to_num(0, max, stk_b);
 	while (*stk_b)
 	{
-		read_stack(stk_a, stk_b);
-		max = get_max_stack(stk_a);
-		min = get_min_stack(stk_a);
-		if ((*stk_b)->value > max)
-			tot = rotate_to_num(tot, min, stk_a);
-		else if ((*stk_b)->value < min)
-			tot = rotate_to_num(tot, min, stk_a);
-		else
-		{
-			next = get_next_num((*stk_b)->value, stk_a);
-			tot = rotate_to_num(tot, next, stk_a);
-		}
 		call_push("pa", stk_b, stk_a);
-		tot++;
+		if (*stk_b)
+			call_down_rotate("rrb", stk_b);
 	}
-	len = len_stack(stk_a);
-	pos = pos_from_value_stack(min, stk_a);
-	while (!stack_is_sorted(stk_a))
-	{
-		if (pos > len / 2)
-			call_down_rotate("rra", stk_a);
-		else
-			call_up_rotate("ra", stk_a);
-		tot++;
-		read_stack(stk_a, stk_b);
-	}
-	return (tot);
 }
 /*****************/
 
 static void	set_rules(t_node **stk_a, t_node **stk_b)
 {
 	int	len;
-	int	tot;
 
 	len = len_stack(stk_a);
-	tot = 0;
 	if (len <= 3)
-		tot = sort_three(tot, stk_a);
-	else //if (len <= 5)
-		tot = sort_five(tot, len, stk_a, stk_b);
-	ft_printf("tot: %d\n", tot);
+		sort_three(stk_a);
+	else if (len <= 10)
+		sort_five(len, stk_a, stk_b);
+	else
+		sort_hundred(stk_a, stk_b);
 }
 
 int	main(int argc, char *argv[])

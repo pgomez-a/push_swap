@@ -19,7 +19,7 @@ void	check_doubles(t_node **stk)
 	}
 }
 
-void	check_sort_list(t_node **stk_a, t_node **stk_b)
+void	check_sort_stack(t_node **stk_a, t_node **stk_b)
 {
 	t_node	*min;
 	t_node	*max;
@@ -46,4 +46,27 @@ void	check_sort_list(t_node **stk_a, t_node **stk_b)
 		}
 	}
 	ft_error("KO");
+}
+
+int	stack_is_sorted(t_node **stk)
+{
+	t_node	*min;
+	t_node	*max;
+
+	if (*stk)
+	{
+		min = *stk;
+		max = (*stk)->node;
+		if (max != NULL)
+		{
+			while (max)
+			{
+				if (min->value > max->value)
+					return (0);
+				min = min->node;
+				max = max->node;
+			}
+		}
+	}
+	return (1);
 }

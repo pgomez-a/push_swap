@@ -27,7 +27,9 @@ CH_SRCS	= checker.c		\
 CH_OBJS	= $(CH_SRCS:.c=.o)
 
 PS_SRCS	= push_swap.c	\
-		  ps_calls.c
+		  ps_calls.c		\
+		  ps_three.c		\
+		  ps_five.c
 
 PS_OBJS	= $(PS_SRCS:.c=.o)
 

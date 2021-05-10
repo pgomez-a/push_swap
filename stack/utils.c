@@ -1,5 +1,6 @@
 #include "stack.h"
 
+/* Return the min int of the stack */
 int	get_min_stack(t_node **stk)
 {
 	t_node	*node;
@@ -20,6 +21,7 @@ int	get_min_stack(t_node **stk)
 	return (-9999);
 }
 
+/* Return the max int of the stack */
 int	get_max_stack(t_node **stk)
 {
 	t_node	*node;
