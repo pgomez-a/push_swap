@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 10:58:08 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/05/10 11:37:50 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/05/10 13:24:36 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,4 @@ void	sort_hundred(int len, t_node **stk_a, t_node **stk_b)
 	rotate_to_num(0, max, stk_b);
 	while (*stk_b)
 		call_push("pa", stk_b, stk_a);
-	read_stack(stk_a, stk_b);
 }

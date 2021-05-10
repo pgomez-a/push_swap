@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 12:04:19 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/05/10 09:03:31 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/05/10 13:40:17 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	ch_read_rules(t_node **stk_a, t_node **stk_b)
 	while (verif > 0)
 	{
 		check_rule(line, stk_a, stk_b);
-		read_stack(stk_a, stk_b);
 		free(line);
 		verif = get_next_line(0, &line);
 	}
