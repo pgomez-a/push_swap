@@ -1,10 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/10 08:52:41 by pgomez-a          #+#    #+#             */
+/*   Updated: 2021/05/10 09:20:58 by pgomez-a         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "stack.h"
 
-/* Return the min int of the stack */
+/**
+ ** Returns the min int of the stack
+ **/
+
 int	get_min_stack(t_node **stk)
 {
 	t_node	*node;
-	int	min;
+	int		min;
 
 	if (*stk)
 	{
@@ -21,11 +36,14 @@ int	get_min_stack(t_node **stk)
 	return (-9999);
 }
 
-/* Return the max int of the stack */
+/**
+ ** Return the max int of the stack
+ **/
+
 int	get_max_stack(t_node **stk)
 {
 	t_node	*node;
-	int	max;
+	int		max;
 
 	if (*stk)
 	{
@@ -42,11 +60,14 @@ int	get_max_stack(t_node **stk)
 	return (-9999);
 }
 
-/* Return the value of the given position */
+/**
+ ** Returns the value of the given position
+ **/
+
 int	value_from_pos_stack(int pos, t_node **stk)
 {
 	t_node	*node;
-	int	count;
+	int		count;
 
 	if (*stk)
 	{
@@ -62,11 +83,14 @@ int	value_from_pos_stack(int pos, t_node **stk)
 	return (-9999);
 }
 
-/* Return the position of the given value */
+/**
+ ** Return the position of the given value
+ **/
+
 int	pos_from_value_stack(int elem, t_node **stk)
 {
 	t_node	*node;
-	int	count;
+	int		count;
 
 	if (*stk)
 	{

@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 08:43:25 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/05/05 10:09:21 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/05/10 09:08:22 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	main(int argc, char *argv[])
 {
+	t_node	*stk_a;
+	t_node	*stk_b;
 	int		count;
 	int		verif;
-	t_node		*stk_a;
-	t_node		*stk_b;
 
 	if (argc > 1)
 	{

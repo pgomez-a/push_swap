@@ -6,11 +6,15 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 11:17:35 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/05/05 10:09:42 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/05/10 09:18:13 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
+
+/**
+ ** Swap rule
+ **/
 
 void	swap(t_node **stk)
 {
@@ -26,6 +30,10 @@ void	swap(t_node **stk)
 	}
 }
 
+/**
+ ** Push rule
+ **/
+
 void	push(t_node **stk_i, t_node **stk_d)
 {
 	int	elem;
@@ -36,6 +44,10 @@ void	push(t_node **stk_i, t_node **stk_d)
 		stack(elem, stk_d);
 	}
 }
+
+/**
+ ** Up Rotate rule
+ **/
 
 void	up_rotate(int rot, t_node **stk)
 {
@@ -51,12 +63,16 @@ void	up_rotate(int rot, t_node **stk)
 		stack(rot, stk);
 }
 
+/**
+ ** Down Rotate rule
+ **/
+
 void	down_rotate(t_node **stk)
 {
 	t_node	*node;
-	int	elem;
+	int		elem;
 
-	if ((*stk)->node) 
+	if ((*stk)->node)
 	{
 		node = *stk;
 		while (node->node->node != NULL)

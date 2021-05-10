@@ -6,11 +6,15 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 12:04:19 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/05/05 10:09:11 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/05/10 09:03:31 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/**
+ ** Checks that swap instruction is well-formatted and executes it
+ **/
 
 static void	check_swap(char *line, t_node **stk_a, t_node **stk_b)
 {
@@ -26,6 +30,10 @@ static void	check_swap(char *line, t_node **stk_a, t_node **stk_b)
 	else
 		ft_error("Error");
 }
+
+/**
+ ** Checks that rotate instruction is well-formatted and executes it
+ **/
 
 static void	check_rotate(char *line, t_node **stk_a, t_node **stk_b)
 {
@@ -55,6 +63,10 @@ static void	check_rotate(char *line, t_node **stk_a, t_node **stk_b)
 		ft_error("Error");
 }
 
+/**
+ ** Checks that push instruction is well-formatted and executes it
+ **/
+
 static void	check_rule(char *line, t_node **stk_a, t_node **stk_b)
 {
 	if (!ft_strncmp(line, "s", 1))
@@ -69,6 +81,9 @@ static void	check_rule(char *line, t_node **stk_a, t_node **stk_b)
 		ft_error("Error");
 }
 
+/**
+ ** Read instructions from stdin
+ **/
 void	ch_read_rules(t_node **stk_a, t_node **stk_b)
 {
 	char	*line;

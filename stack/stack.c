@@ -6,13 +6,16 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 09:57:19 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/05/07 14:27:46 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/05/10 09:19:50 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-/* Stack the given element */
+/**
+ ** Stacks the given element
+ **/
+
 void	stack(int elem, t_node **stk)
 {
 	t_node	*head;
@@ -26,11 +29,14 @@ void	stack(int elem, t_node **stk)
 	}
 }
 
-/* Unstack an element an return it */
+/** 
+ ** Unstacks an element and returns it
+ **/
+
 int	unstack(t_node **stk)
 {
 	t_node	*node;
-	int	value;
+	int		value;
 
 	value = (*stk)->value;
 	node = *stk;
@@ -40,11 +46,14 @@ int	unstack(t_node **stk)
 	return (value);
 }
 
-/* Get the len of the stack */
+/**
+ ** Gets the len of the stack
+ **/
+
 int	len_stack(t_node **stk)
 {
 	t_node	*len;
-	int	result;
+	int		result;
 
 	if (*stk)
 	{
@@ -59,6 +68,10 @@ int	len_stack(t_node **stk)
 	}
 	return (-1);
 }
+
+/**
+ ** Print stack_a and stack_b
+ **/
 
 static void	print_last(int mode, t_node **a, t_node **b)
 {
@@ -86,7 +99,6 @@ static void	print_last(int mode, t_node **a, t_node **b)
 	}
 }
 
-/* Print stack_a and stack_b */
 void	read_stack(t_node **stk_a, t_node **stk_b)
 {
 	t_node	*a;

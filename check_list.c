@@ -1,4 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_list.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/10 09:06:55 by pgomez-a          #+#    #+#             */
+/*   Updated: 2021/05/10 09:08:08 by pgomez-a         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
+/**
+ ** Checks if there are repeated numbers in the stack
+ **/
 
 void	check_doubles(t_node **stk)
 {
@@ -18,6 +34,10 @@ void	check_doubles(t_node **stk)
 		ct_y = ct_y->node;
 	}
 }
+
+/**
+ ** Checks if the list is sorted for the checker program
+ **/
 
 void	check_sort_stack(t_node **stk_a, t_node **stk_b)
 {
@@ -47,6 +67,10 @@ void	check_sort_stack(t_node **stk_a, t_node **stk_b)
 	}
 	ft_error("KO");
 }
+
+/**
+ ** Checks if the list is sorted for the push_swap program
+ **/
 
 int	stack_is_sorted(t_node **stk)
 {

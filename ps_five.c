@@ -1,4 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_five.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/10 09:11:08 by pgomez-a          #+#    #+#             */
+/*   Updated: 2021/05/10 09:14:25 by pgomez-a         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
+/**
+ ** Sort stack_a the best way to introduce a number from top of stack_b
+ **/
 
 static void	rotate_five_stack(int min, int max, t_node **stk_a, t_node **stk_b)
 {
@@ -15,6 +31,10 @@ static void	rotate_five_stack(int min, int max, t_node **stk_a, t_node **stk_b)
 	}
 }
 
+/**
+ ** Once the stack is sorted, it rotates until the min is at the top
+ **/
+
 static void	sort_five_stack(int min, t_node **stk_a)
 {
 	int	len;
@@ -25,11 +45,15 @@ static void	sort_five_stack(int min, t_node **stk_a)
 	while (!stack_is_sorted(stk_a))
 	{
 		if (pos > len / 2)
-			call_down_rotate("rra", stk_a);	
+			call_down_rotate("rra", stk_a);
 		else
 			call_up_rotate("ra", stk_a);
 	}
 }
+
+/**
+ ** Sorts the stack if it has ten or less numbers, but optimized for five
+ **/
 
 void	sort_five(int len, t_node **stk_a, t_node **stk_b)
 {

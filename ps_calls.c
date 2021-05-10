@@ -5,12 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 11:15:39 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/05/07 11:19:11 by pgomez-a         ###   ########.fr       */
+/*   Created: 2021/05/10 09:08:34 by pgomez-a          #+#    #+#             */
+/*   Updated: 2021/05/10 09:10:59 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/**
+ ** Executes and prints swap rule
+ **/
 
 void	call_swap(char *str, t_node **stk)
 {
@@ -18,11 +22,19 @@ void	call_swap(char *str, t_node **stk)
 	ft_printf("%s\n", str);
 }
 
+/**
+ ** Executes and prints push rule
+ **/
+
 void	call_push(char *str, t_node **stk_i, t_node **stk_d)
 {
 	push(stk_i, stk_d);
 	ft_printf("%s\n", str);
 }
+
+/**
+ ** Executes and prints up_rotate rule
+ **/
 
 void	call_up_rotate(char *str, t_node **stk)
 {
@@ -30,11 +42,20 @@ void	call_up_rotate(char *str, t_node **stk)
 	ft_printf("%s\n", str);
 }
 
+/**
+ ** Executes and prints down_rotate rule
+ **/
+
 void	call_down_rotate(char *str, t_node **stk)
 {
 	down_rotate(stk);
 	ft_printf("%s\n", str);
 }
+
+/**
+ ** Rotates to the given num. If verif == 1, it rotates int stack_a, so
+ ** the output is "xa"; otherwise it rotates stack_b, so the otput is "xb"
+ **/
 
 void	rotate_to_num(int verif, int num, t_node **stk)
 {
