@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 08:45:17 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/05/10 08:53:46 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/05/10 11:18:36 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		stack_is_sorted(t_node **stk);
 /* utils.c */
 void	ft_error(char *str);
 int		get_next_num(int elem, t_node **stk);
+int		get_prev_num(int elem, t_node **stk);
 
 /* ch_rules.c */
 void	ch_read_rules(t_node **stk_a, t_node **stk_b);
@@ -45,5 +46,11 @@ void	sort_three(t_node **stk);
 
 /* ps_five.c */
 void	sort_five(int len, t_node **stk_a, t_node **stk_b);
+
+/* ps_hundred.c */
+void	sort_hundred(int len, t_node **stk_a, t_node **stk_b);
+
+/* ps_hundred.c */
+void	sort_five_hundred(int len, t_node **stk_a, t_node **stk_b);
 
 #endif

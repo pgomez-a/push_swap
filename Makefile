@@ -6,7 +6,7 @@
 #    By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/04 08:55:31 by pgomez-a          #+#    #+#              #
-#    Updated: 2021/05/10 08:58:59 by pgomez-a         ###   ########.fr        #
+#    Updated: 2021/05/10 11:19:32 by pgomez-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,12 @@ CH_SRCS	= checker.c		\
 
 CH_OBJS	= $(CH_SRCS:.c=.o)
 
-PS_SRCS	= push_swap.c	\
+PS_SRCS	= push_swap.c		\
 		  ps_calls.c		\
 		  ps_three.c		\
-		  ps_five.c
+		  ps_five.c			\
+		  ps_hundred.c		\
+		  ps_fivehundred.c
 
 PS_OBJS	= $(PS_SRCS:.c=.o)
 
