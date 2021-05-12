@@ -6,7 +6,7 @@
 /*   By: pgomez-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 10:58:08 by pgomez-a          #+#    #+#             */
-/*   Updated: 2021/05/10 13:24:36 by pgomez-a         ###   ########.fr       */
+/*   Updated: 2021/05/12 10:02:08 by pgomez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static void	look_for_part(int parts, int len, t_node **stk_a, t_node **stk_b)
 	{
 		if (len < parts)
 			parts = len;
-		while (parts > 0)
+		while (parts > 0 && stk_a)
 		{
 			node = *stk_a;
 			max = node->value;
@@ -116,16 +116,13 @@ static void	look_for_part(int parts, int len, t_node **stk_a, t_node **stk_b)
 void	sort_hundred(int len, t_node **stk_a, t_node **stk_b)
 {
 	int	parts;
-	int	count;
 	int	max;
 
 	parts = len / 8;
-	count = 0;
-	while (count < 9)
+	while (len > 0)
 	{
 		look_for_part(parts, len, stk_a, stk_b);
 		len = len_stack(stk_a);
-		count++;
 	}
 	max = get_max_stack(stk_b);
 	rotate_to_num(0, max, stk_b);
