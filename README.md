@@ -1,4 +1,6 @@
 # push_swap
+<img width="1925" alt="push_swap" src="https://user-images.githubusercontent.com/74931024/117972740-c8dfae00-b32b-11eb-80c7-b4ba871217b4.png">
+
 This project is simply a good way to get involved in the **_world of algorithms_** and everything related to their optimization. Due to the limitations imposed on us, we have to find, among many algorithms, the best one to sort an unordered list of numbers stored in a stack.<br>
 <img width="256" align="right" alt="unsorted stack" src="https://user-images.githubusercontent.com/74931024/117662329-b89ac800-b19f-11eb-8812-983cdd1089da.png">
 
