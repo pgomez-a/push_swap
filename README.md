@@ -3,6 +3,29 @@
 
 **If you want to learn more about IT topics, visit my website:** [**IA Notes**](https://ia-notes.com/)
 
+### How to run push_swap?
+1. Clone push_swap repository:
+
+       git clone https://github.com/pgomez-a/push_swap.git && cd push_swap
+
+2. Run <b>make</b> to create the program:
+
+       make
+
+3. Run <b>push_swap</b> with the list of numbers you want to sort:
+
+       ./push_swap 4 3 2 1
+       
+4. Run <b>checker</b> to see if the numbers are ordered correctly:
+
+       ./checker 4 3 2 1
+       pb
+       ra
+       sa
+       pa
+       ra
+       ^D
+
 This project is simply a good way to get involved in the **_world of algorithms_** and everything related to their optimization. Due to the limitations imposed on us, we have to find, among many algorithms, the best one to sort an unordered list of numbers stored in a stack.<br>
 <img width="256" align="right" alt="unsorted stack" src="https://user-images.githubusercontent.com/74931024/117662329-b89ac800-b19f-11eb-8812-983cdd1089da.png">
 
