@@ -1,7 +1,7 @@
 # push_swap
 <img width="1925" alt="push_swap" src="https://user-images.githubusercontent.com/74931024/117972740-c8dfae00-b32b-11eb-80c7-b4ba871217b4.png"><br>
 
-**If you want to learn more about IT topics, visit my website:** [**IA Notes**](https://ia-notes.com/)
+**If you want to learn more about IT topics, [I invite you to join my Patreon channel](https://www.patreon.com/pgomeza) and visit my website:** [**IA Notes**](https://ia-notes.com/)
 
 ### How to run push_swap?
 1. Clone push_swap repository:
